@@ -12,9 +12,11 @@ services:
     entrypoint: python store.py
     links:
       - redis
+    container_name: redis_push
 
   svr_pop:
     image: temol/redistest
     entrypoint: python delivery.py
     links:
       - redis
+    container_name: redis_pop
