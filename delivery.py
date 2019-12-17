@@ -14,4 +14,5 @@ if __name__ == '__main__':
         time.sleep(0.1)
 
         x = client.blpop("message", 120)
-        print('pop from [message]:  %s' % (x[1].decode(),))
+        if x:
+            print('pop from [message]:  %s' % (x[1].decode(),))
