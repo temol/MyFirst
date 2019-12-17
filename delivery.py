@@ -6,7 +6,8 @@ import time
 
 
 if __name__ == '__main__':
-    client = redis.Redis("redis")
+    pool = redis.ConnectionPool(host='redis', max_connections=5)
+    client = redis.Redis(connection_pool=pool)
 
     print('pop')
     while True:
