@@ -5,8 +5,10 @@ services:
     image: redis
     ports:
     - 6379:6379
+    volumes:
+    - /data:/home/redis
     container_name: redis
-    command: redis-server --appendonly yes
+
 
   svr_push:
     build:
