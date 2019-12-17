@@ -8,7 +8,9 @@ import time
 if __name__ == '__main__':
     client = redis.Redis("redis")
 
+    print('pop')
     while True:
         time.sleep(0.1)
+
         x = client.blpop("message", 120)
-        print('pull from [message]:  %s' % (x[1].decode(),))
+        print('pop from [message]:  %s' % (x[1].decode(),))
