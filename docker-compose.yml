@@ -6,7 +6,7 @@ services:
     ports:
     - 6379:6379
     volumes:
-    - /data:/home/redis
+    - /home/redis:/data
     container_name: redis
 
 
