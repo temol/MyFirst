@@ -20,11 +20,17 @@ if __name__ == '__main__':
     ]
     for res in res_list:
         m = MeterModel.instance(res, client, "key")
-        print(m.ResKey, m.InputTime, m.ResType)
+        if m:
+            print(m.ResKey, m.InputTime, m.ResType)
+        else:
+            print(res, "no data.")
 
     for res in res_list:
         m = MeterModel.instance(res, client, "set")
-        print(m.meterPrice, m.serverIP, m.serverPort)
+        if m:
+            print(m.meterPrice, m.serverIP, m.serverPort)
+        else:
+            print(res, "no data.")
 
     while True:
         time.sleep(30)

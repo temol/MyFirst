@@ -41,7 +41,7 @@ class MeterModel:
             # 发送再次查询消息
             redis_client.rpush("db_get", meter.tag)
             for times in range(3):
-                time.sleep(0.2)
+                time.sleep(3)
                 if redis_client.exists(meter.tag):
                     val = redis_client.get(meter.tag)
                     meter.data = json.loads(val)
