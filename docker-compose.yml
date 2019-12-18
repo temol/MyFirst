@@ -9,7 +9,7 @@ services:
     volumes:
     - /home/redis:/data:rw
     - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf
+    command: redis-server /home/redis.conf:ro
 
   svr_push:
     build:
