@@ -8,8 +8,8 @@ services:
     - 6379:6379/tcp
     volumes:
     - /home/redis:/data:rw
-    - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf:ro
+    - ./redis.conf:/home/redis.conf:ro
+    command: redis-server /home/redis.conf
 
   svr_push:
     build:
