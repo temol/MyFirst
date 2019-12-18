@@ -11,14 +11,14 @@ services:
     - ./redis.conf:/home/redis.conf:ro
     command: redis-server /home/redis.conf
 
-  svr_push:
+  core_srv:
     build:
       context: .
     image: temol/redistest
-    entrypoint: python store.py
+    entrypoint: python core_server.py
     links:
       - redis
-    container_name: redis_push
+    container_name: core_srv
 
   svr_pop:
     image: temol/redistest
