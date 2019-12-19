@@ -55,13 +55,13 @@ class DatabaseOperation:
 
 if __name__ == '__main__':
     # redis连接池
-    redis_pool = redis.ConnectionPool(
+    redis_conn_pool = redis.ConnectionPool(
         host=setting.redis_host,
         port=setting.redis_port,
         max_connections=5
     )
     # sql连接池
-    conn_pool = PooledDB(
+    sql_conn_pool = PooledDB(
         creator=pymssql,
         mincached=2,
         maxcached=5,
@@ -77,10 +77,10 @@ if __name__ == '__main__':
     # 创建表具基本资料及配置处理线程
     get_thread = threading.Thread(
         target=DatabaseOperation.meter_get, args=(
-            redis_pool, conn_pool, 0.1))
+            redis_conn_pool, sql_conn_pool, 0.1))
     update_thread = threading.Thread(
         target=DatabaseOperation.meter_update, args=(
-            redis_pool, conn_pool, 0.1))
+            redis_conn_pool, sql_conn_pool, 0.1))
     get_thread.start()
     update_thread.start()
 
